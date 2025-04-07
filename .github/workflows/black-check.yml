@@ -1,0 +1,24 @@
+name: 🧼 Code Formatter Check (Black)
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  check-black:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install black
+        run: |
+          pip install black
+
+      - name: Run black check
+        run: |
+          black --check verdant/ tests/
