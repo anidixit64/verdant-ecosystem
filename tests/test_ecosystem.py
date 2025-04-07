@@ -1,10 +1,9 @@
-import sys
-import os
+import sys, os
 
-# Add the root project directory to the Python path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from verdant.ecosystem import Ecosystem
+from verdant.species import Species
 
 
 def test_ecosystem_initialization():
@@ -16,5 +15,6 @@ def test_ecosystem_initialization():
 
 def test_add_species():
     eco = Ecosystem("Green Valley")
-    eco.add_species("Deer")
-    assert "Deer" in eco.species
+    deer = Species("Deer", 100, 10.0)
+    eco.add_species(deer)
+    assert deer in eco.species
